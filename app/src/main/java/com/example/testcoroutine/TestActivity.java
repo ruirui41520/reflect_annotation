@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
+//参考 https://github.com/bruce3x/ViewFinder.git
 
 @ContentView(R.layout.activity_main)
 public class TestActivity extends BaseActivity {
