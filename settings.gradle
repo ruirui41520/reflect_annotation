@@ -1,0 +1,5 @@
+include ':zdd-viewinjector-compiler'
+include ':zdd-viewInjector-annotation'
+include ':zdd-viewInjector'
+include ':app'
+rootProject.name = "TestCoroutine"
