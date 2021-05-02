@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/zdd-plugin" />
             <option value="$PROJECT_DIR$/zdd-viewInjector" />
             <option value="$PROJECT_DIR$/zdd-viewInjector-annotation" />
             <option value="$PROJECT_DIR$/zdd-viewinjector-compiler" />
