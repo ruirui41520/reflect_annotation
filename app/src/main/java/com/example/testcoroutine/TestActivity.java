@@ -46,9 +46,10 @@ public static final int REQUEST_PERMISSION_CALL = 100;
     }
 
     private void launchClass(){
-        PathClassLoader classLoader = new PathClassLoader(path, getClassLoader());
+//        PathClassLoader classLoader = new PathClassLoader(path, getClassLoader());
         try {
-            Class<?> testClass = classLoader.loadClass("com.example.zdd_plugin.TestPlugin");
+//            Class<?> testClass = classLoader.loadClass("com.example.zdd_plugin.TestPlugin");
+            Class<?> testClass = Class.forName("com.example.zdd_plugin.TestPlugin");
             Method sayHiMethod = testClass.getMethod("print");
             sayHiMethod.invoke(null);
         }catch (NoSuchMethodException e){
