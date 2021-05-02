@@ -2,16 +2,13 @@ package com.example.testcoroutine;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.Settings;
-import android.util.Log;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -41,7 +38,6 @@ public static final int REQUEST_PERMISSION_CALL = 100;
         setContentView(R.layout.activity_main);
         ViewFinder.inject(this);
         showView.setText("annotation");
-        Log.e("path:","path = " + path);
         if (checkPermission()){
             launchClass();
         } else {
