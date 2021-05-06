@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.testcoroutine.插件.ClassLoaderUtil;
+import com.example.testcoroutine.流.StreamUtil;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
 
@@ -39,12 +40,13 @@ public static final int REQUEST_PERMISSION_CALL = 100;
         setContentView(R.layout.activity_main);
         ViewFinder.inject(this);
         showView.setText("annotation");
-//        if (checkPermission()){
+        if (checkPermission()){
 //            launchClass();
-//        } else {
-//            startRequestPermission();
-//        }
-        ClassLoaderUtil.useStaticVariable();
+            StreamUtil.copyFileDemo();
+        } else {
+            startRequestPermission();
+        }
+//        ClassLoaderUtil.useStaticVariable();
     }
 
 
@@ -68,12 +70,12 @@ public static final int REQUEST_PERMISSION_CALL = 100;
     }
 
     private void startRequestPermission(){
-        ActivityCompat.requestPermissions(TestActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CALL);
+        ActivityCompat.requestPermissions(TestActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CALL);
     }
 
     private boolean checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                 return true;
             } else {
                 return false;
@@ -89,7 +91,8 @@ public static final int REQUEST_PERMISSION_CALL = 100;
         if (requestCode == REQUEST_PERMISSION_CALL){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    launchClass();
+//                    launchClass();
+                    StreamUtil.copyFileDemo();
                 }else {
                     //如果拒绝授予权限,且勾选了再也不提醒
                     if (!shouldShowRequestPermissionRationale(permissions[0])){
