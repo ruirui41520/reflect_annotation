@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.testcoroutine.插件.ClassLoaderUtil;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
 
@@ -38,12 +39,15 @@ public static final int REQUEST_PERMISSION_CALL = 100;
         setContentView(R.layout.activity_main);
         ViewFinder.inject(this);
         showView.setText("annotation");
-        if (checkPermission()){
-            launchClass();
-        } else {
-            startRequestPermission();
-        }
+//        if (checkPermission()){
+//            launchClass();
+//        } else {
+//            startRequestPermission();
+//        }
+        ClassLoaderUtil.useStaticVariable();
     }
+
+
 
     private void launchClass(){
 //        PathClassLoader classLoader = new PathClassLoader(path, getClassLoader());

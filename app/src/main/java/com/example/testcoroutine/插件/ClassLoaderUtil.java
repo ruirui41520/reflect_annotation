@@ -50,4 +50,10 @@ parent: 父 ClassLoader
             e.printStackTrace();
         }
     }
+
+    public interface ClassInterface {}
+
+    public static void useStaticVariable(){
+        Log.e("load Class","ClassChild.sNumber + " + ClassChild.sNumber);
+    }
 }
