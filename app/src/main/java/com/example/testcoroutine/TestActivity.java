@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,15 +18,13 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.example.testcoroutine.插件.ClassLoaderUtil;
+import com.example.testcoroutine.LruCache源码.ImageLoaderUtil;
 import com.example.testcoroutine.流.StreamUtil;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
-import dalvik.system.PathClassLoader;
 //参考 https://github.com/bruce3x/ViewFinder.git
 
 @ContentView(R.layout.activity_main)
@@ -32,8 +32,11 @@ public class TestActivity extends BaseActivity {
 private final String path = "/sdcard/test.dex";
 public static final int REQUEST_PERMISSION_CALL = 100;
 
-    @BindView(R.id.show)TextView showView;
+    @BindView(R.id.show)TextView showView;;
 
+    @BindView(R.id.topImage) ImageView imageView;
+
+    ImageLoaderUtil imageLoaderUtil = new ImageLoaderUtil();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,14 +45,18 @@ public static final int REQUEST_PERMISSION_CALL = 100;
         showView.setText("annotation");
         if (checkPermission()){
 //            launchClass();
-            StreamUtil.copyFileDemo();
+//            StreamUtil.copyFileDemo();
+            Log.e("test","eeeee");
+            imageLoaderUtil.updateImage("bitmap",imageView);
         } else {
             startRequestPermission();
         }
+
+//        while (true){
+//            demoList.add(new FileUtils());
+//        }
 //        ClassLoaderUtil.useStaticVariable();
     }
-
-
 
     private void launchClass(){
 //        PathClassLoader classLoader = new PathClassLoader(path, getClassLoader());
@@ -70,12 +77,12 @@ public static final int REQUEST_PERMISSION_CALL = 100;
     }
 
     private void startRequestPermission(){
-        ActivityCompat.requestPermissions(TestActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CALL);
+        ActivityCompat.requestPermissions(TestActivity.this, new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CALL);
     }
 
     private boolean checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE ) == PackageManager.PERMISSION_GRANTED) {
                 return true;
             } else {
                 return false;
@@ -92,7 +99,8 @@ public static final int REQUEST_PERMISSION_CALL = 100;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
 //                    launchClass();
-                    StreamUtil.copyFileDemo();
+//                    StreamUtil.copyFileDemo();
+                    imageLoaderUtil.updateImage("bitmap",imageView);
                 }else {
                     //如果拒绝授予权限,且勾选了再也不提醒
                     if (!shouldShowRequestPermissionRationale(permissions[0])){
