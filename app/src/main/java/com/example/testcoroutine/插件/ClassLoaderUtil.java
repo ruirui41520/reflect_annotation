@@ -6,6 +6,8 @@ import android.util.Log;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import dalvik.system.BaseDexClassLoader;
 import dalvik.system.DexClassLoader;
@@ -29,7 +31,7 @@ optimizedDirectory: 存放优化后的 dex，可以为空
 libraryPath: 存放需要加载的 native 库的目录
 parent: 父 ClassLoader
              */
-            DexClassLoader dexClassLoader = new DexClassLoader(apkPath, context.getCacheDir().getAbsolutePath(),null,context.getClassLoader());
+            DexClassLoader dexClassLoader = new DexClassLoader(apkPath, context.getCacheDir().getAbsolutePath(),null, context.getClassLoader());
             Object pluginPathList = pathListField.get(dexClassLoader);
             Object[] pluginElements = (Object[])dexElementField.get(pluginPathList);
 
@@ -55,5 +57,23 @@ parent: 父 ClassLoader
 
     public static void useStaticVariable(){
         Log.e("load Class","ClassChild.sNumber + " + ClassChild.sNumber);
+    }
+
+    private void launchClass(){
+//        PathClassLoader classLoader = new PathClassLoader(path, getClassLoader());
+        try {
+//            Class<?> testClass = classLoader.loadClass("com.example.zdd_plugin.TestPlugin");
+            Class<?> testClass = Class.forName("com.example.zdd_plugin.TestPlugin");
+            Method sayHiMethod = testClass.getMethod("print");
+            sayHiMethod.invoke(null);
+        }catch (NoSuchMethodException e){
+            e.printStackTrace();
+        }catch (ClassNotFoundException e){
+            e.printStackTrace();
+        }catch (InvocationTargetException e){
+            e.printStackTrace();
+        }catch (IllegalAccessException e){
+            e.printStackTrace();
+        }
     }
 }

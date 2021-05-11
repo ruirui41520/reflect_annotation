@@ -19,12 +19,15 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.testcoroutine.LruCache源码.ImageLoaderUtil;
-import com.example.testcoroutine.流.StreamUtil;
+import com.example.testcoroutine.拷贝.CloneUtil;
+import com.example.testcoroutine.泛型.TestTUtil;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
 
+import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 //参考 https://github.com/bruce3x/ViewFinder.git
 
 @ContentView(R.layout.activity_main)
@@ -46,34 +49,19 @@ public static final int REQUEST_PERMISSION_CALL = 100;
         if (checkPermission()){
 //            launchClass();
 //            StreamUtil.copyFileDemo();
-            Log.e("test","eeeee");
             imageLoaderUtil.updateImage("bitmap",imageView);
         } else {
             startRequestPermission();
         }
+//        CloneUtil.testShallowClone();
+//        CloneUtil.testDeepClone();
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        TestTUtil.writeListWithS(arrayList);
+        TestTUtil.readListWithE(arrayList);
 
 //        while (true){
 //            demoList.add(new FileUtils());
 //        }
-//        ClassLoaderUtil.useStaticVariable();
-    }
-
-    private void launchClass(){
-//        PathClassLoader classLoader = new PathClassLoader(path, getClassLoader());
-        try {
-//            Class<?> testClass = classLoader.loadClass("com.example.zdd_plugin.TestPlugin");
-            Class<?> testClass = Class.forName("com.example.zdd_plugin.TestPlugin");
-            Method sayHiMethod = testClass.getMethod("print");
-            sayHiMethod.invoke(null);
-        }catch (NoSuchMethodException e){
-            e.printStackTrace();
-        }catch (ClassNotFoundException e){
-            e.printStackTrace();
-        }catch (InvocationTargetException e){
-            e.printStackTrace();
-        }catch (IllegalAccessException e){
-            e.printStackTrace();
-        }
     }
 
     private void startRequestPermission(){

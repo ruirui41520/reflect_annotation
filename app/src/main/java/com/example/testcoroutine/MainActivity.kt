@@ -168,6 +168,13 @@ class MainActivity : BaseActivity() {
                 println("RuntimeMethodInfo version =" + runtimeMethodInfo.version)
             }
         }
+        for (construct in cls.constructors){
+            val runtimeConstructInfo = construct.getAnnotation(RuntimeConstructInfo::class.java)
+            if (runtimeConstructInfo != null){
+                println("RuntimeMethodInfo author =" + runtimeConstructInfo.className)
+                println("RuntimeMethodInfo version =" + runtimeConstructInfo.layoutId)
+            }
+        }
     }
 
 }
