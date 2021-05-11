@@ -1,4 +1,4 @@
-package com.example.testcoroutine.注解;
+package com.example.testcoroutine.序列化;
 
 import android.os.Parcel;
 import android.os.Parcelable;
