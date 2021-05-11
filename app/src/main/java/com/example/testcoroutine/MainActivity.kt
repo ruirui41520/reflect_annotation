@@ -3,9 +3,10 @@ package com.example.testcoroutine
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
-import android.os.PersistableBundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import com.example.testcoroutine.注解.RuntimeConstructInfo
+import com.example.testcoroutine.注解.RuntimeMethodInfo
+import com.example.testcoroutine.注解.RuntimeMethodTest
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.Mutex
