@@ -6,6 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:text="Request Data"
+        android:gravity="center"
+        android:id="@+id/topImage"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
     <TextView
         android:text="Request Data"
         android:gravity="center"
