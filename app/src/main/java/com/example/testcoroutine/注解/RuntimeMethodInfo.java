@@ -1,4 +1,4 @@
-package com.example.testcoroutine;
+package com.example.testcoroutine.注解;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -9,9 +9,9 @@ import java.lang.annotation.Target;
 
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.CONSTRUCTOR)
+@Target(value = ElementType.METHOD)
 @Inherited
-public @interface RuntimeConstructInfo {
-    int layoutId();
-    String className() default "Custom";
+public @interface RuntimeMethodInfo {
+    String author();
+    int version() default 1;
 }
