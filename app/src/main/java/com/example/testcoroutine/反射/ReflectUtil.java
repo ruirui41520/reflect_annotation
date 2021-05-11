@@ -22,7 +22,8 @@ public class ReflectUtil {
             method.invoke(ls,"openValue");
 
             // 反射获取对象方法并调用对象方法
-            Method methodInstance = ls.getMethod("printStringInstance", String.class);
+            Method methodInstance = ls.getDeclaredMethod("printStringInstance", String.class);
+            methodInstance.setAccessible(true);
             methodInstance.invoke(holder,"printString");
 
             //反射获取变量

@@ -23,7 +23,7 @@ public class ReflectHolder {
         this.closeValue = closeValue;
     }
 
-    public void printStringInstance(String str){
+    private void printStringInstance(String str){
         Log.e("*********","printStringInstance: " + str);
     }
 
