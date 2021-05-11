@@ -19,14 +19,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.testcoroutine.LruCache源码.ImageLoaderUtil;
-import com.example.testcoroutine.拷贝.CloneUtil;
+import com.example.testcoroutine.反射.ReflectUtil;
 import com.example.testcoroutine.泛型.TestTUtil;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 //参考 https://github.com/bruce3x/ViewFinder.git
 
@@ -55,9 +52,10 @@ public static final int REQUEST_PERMISSION_CALL = 100;
         }
 //        CloneUtil.testShallowClone();
 //        CloneUtil.testDeepClone();
-        ArrayList<Integer> arrayList = new ArrayList<Integer>();
-        TestTUtil.writeListWithS(arrayList);
-        TestTUtil.readListWithE(arrayList);
+//        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+//        TestTUtil.writeListWithS(arrayList);
+//        TestTUtil.readListWithE(arrayList);
+        ReflectUtil.createHolderClass();
 
 //        while (true){
 //            demoList.add(new FileUtils());
