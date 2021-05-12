@@ -59,6 +59,9 @@ public static final int REQUEST_PERMISSION_CALL = 100;
             startRequestPermission();
         }
         startActivity();
+        if (savedInstanceState != null){
+            Log.e("****InstanceState","onCreate savedInstanceState :" + savedInstanceState.getFloat("MainActivity"));
+        }
         Log.e("****MainActivity","onCreate");
     }
 
@@ -210,10 +213,14 @@ public static final int REQUEST_PERMISSION_CALL = 100;
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putFloat("MainActivity",10.0f);
+        Log.e("****InstanceState","onSaveInstanceState");
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        //屏幕旋转切换
         super.onRestoreInstanceState(savedInstanceState);
+        Log.e("****InstanceState","onRestoreInstanceState ： " + savedInstanceState.getFloat("MainActivity"));
     }
 }
