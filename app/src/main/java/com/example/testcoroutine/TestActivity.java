@@ -10,17 +10,21 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.testcoroutine.Activity栈.SingleInstanceActivity;
+import com.example.testcoroutine.Activity栈.SingleTaskActivity;
+import com.example.testcoroutine.Activity栈.SingleTopActivity;
+import com.example.testcoroutine.Activity栈.StandardActivity;
 import com.example.testcoroutine.LruCache源码.ImageLoaderUtil;
 import com.example.testcoroutine.反射.ReflectUtil;
-import com.example.testcoroutine.泛型.TestTUtil;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
 
@@ -32,34 +36,91 @@ public class TestActivity extends BaseActivity {
 private final String path = "/sdcard/test.dex";
 public static final int REQUEST_PERMISSION_CALL = 100;
 
-    @BindView(R.id.show)TextView showView;;
+    @BindView(R.id.standard_btn)
+    Button standard;
 
-    @BindView(R.id.topImage) ImageView imageView;
+    @BindView(R.id.single_instance_btn)
+    Button singleInstance;
 
-    ImageLoaderUtil imageLoaderUtil = new ImageLoaderUtil();
+    @BindView(R.id.single_top_btn)
+    Button singleTop;
+
+    @BindView(R.id.single_task_btn)
+    Button singleTask;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_test);
         ViewFinder.inject(this);
-        showView.setText("annotation");
         if (checkPermission()){
-//            launchClass();
-//            StreamUtil.copyFileDemo();
-            imageLoaderUtil.updateImage("bitmap",imageView);
+
         } else {
             startRequestPermission();
         }
-//        CloneUtil.testShallowClone();
-//        CloneUtil.testDeepClone();
-//        ArrayList<Integer> arrayList = new ArrayList<Integer>();
-//        TestTUtil.writeListWithS(arrayList);
-//        TestTUtil.readListWithE(arrayList);
-        ReflectUtil.createHolderClass();
+        startActivity();
+        Log.e("****MainActivity","onCreate");
+    }
 
-//        while (true){
-//            demoList.add(new FileUtils());
-//        }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("****MainActivity","onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("****MainActivity","onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("****MainActivity","onPause");
+        try {
+            Thread.sleep(1000);
+        }catch (InterruptedException e){
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("****MainActivity","onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("****MainActivity","onDestroy");
+    }
+
+    private void startActivity(){
+        standard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TestActivity.this, StandardActivity.class));
+            }
+        });
+        singleInstance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TestActivity.this, SingleInstanceActivity.class));
+            }
+        });
+        singleTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TestActivity.this, SingleTaskActivity.class));
+            }
+        });
+        singleTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TestActivity.this, SingleTopActivity.class));
+            }
+        });
     }
 
     private void startRequestPermission(){
@@ -84,9 +145,7 @@ public static final int REQUEST_PERMISSION_CALL = 100;
         if (requestCode == REQUEST_PERMISSION_CALL){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
-//                    launchClass();
-//                    StreamUtil.copyFileDemo();
-                    imageLoaderUtil.updateImage("bitmap",imageView);
+
                 }else {
                     //如果拒绝授予权限,且勾选了再也不提醒
                     if (!shouldShowRequestPermissionRationale(permissions[0])){
@@ -146,5 +205,15 @@ public static final int REQUEST_PERMISSION_CALL = 100;
         Uri uri = Uri.fromParts("package", getPackageName(), null);
         intent.setData(uri);
         startActivityForResult(intent, 123);
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }

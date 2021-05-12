@@ -12,12 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
+        android:excludeFromRecents="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Activity栈.StandardActivity" android:launchMode="standard">
+        </activity>
+        <activity android:name=".Activity栈.SingleTopActivity" android:launchMode="singleTop">
+        </activity>
+        <activity android:name=".Activity栈.SingleTaskActivity" android:launchMode="singleTask" android:taskAffinity="com.android.singleTask">
+        </activity>
+        <activity android:name=".Activity栈.SingleInstanceActivity" android:launchMode="singleInstance">
         </activity>
     </application>
 
