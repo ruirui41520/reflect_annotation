@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomGalleryGroup">
+        <!-- Sets a drawable as the content of this ImageView. -->
+        <attr name="widthMargin" format="integer" />
+        <attr name="heightMargin" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomDragView">
+        <!-- Sets a drawable as the content of this ImageView. -->
+        <attr name="target_width" format="integer" />
+        <attr name="target_height" format="integer" />
+    </declare-styleable>
+</resources>

@@ -13,11 +13,13 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.testcoroutine.Activity栈.SingleInstanceActivity;
 import com.example.testcoroutine.Activity栈.SingleTaskActivity;
@@ -35,6 +37,7 @@ import java.util.ArrayList;
 public class TestActivity extends BaseActivity {
 private final String path = "/sdcard/test.dex";
 public static final int REQUEST_PERMISSION_CALL = 100;
+FragmentManager manager = getSupportFragmentManager();
 
     @BindView(R.id.standard_btn)
     Button standard;
@@ -62,25 +65,21 @@ public static final int REQUEST_PERMISSION_CALL = 100;
         if (savedInstanceState != null){
             Log.e("****InstanceState","onCreate savedInstanceState :" + savedInstanceState.getFloat("MainActivity"));
         }
-        Log.e("****MainActivity","onCreate");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e("****MainActivity","onStart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("****MainActivity","onResume");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e("****MainActivity","onPause");
         try {
             Thread.sleep(1000);
         }catch (InterruptedException e){
@@ -90,13 +89,11 @@ public static final int REQUEST_PERMISSION_CALL = 100;
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e("****MainActivity","onStop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e("****MainActivity","onDestroy");
     }
 
     private void startActivity(){
@@ -214,13 +211,11 @@ public static final int REQUEST_PERMISSION_CALL = 100;
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putFloat("MainActivity",10.0f);
-        Log.e("****InstanceState","onSaveInstanceState");
     }
 
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         //屏幕旋转切换
         super.onRestoreInstanceState(savedInstanceState);
-        Log.e("****InstanceState","onRestoreInstanceState ： " + savedInstanceState.getFloat("MainActivity"));
     }
 }
