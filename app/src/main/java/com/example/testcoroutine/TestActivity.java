@@ -26,6 +26,7 @@ import com.example.testcoroutine.Activity栈.SingleTaskActivity;
 import com.example.testcoroutine.Activity栈.SingleTopActivity;
 import com.example.testcoroutine.Activity栈.StandardActivity;
 import com.example.testcoroutine.LruCache源码.ImageLoaderUtil;
+import com.example.testcoroutine.Recyclerview使用.CoinsActivity;
 import com.example.testcoroutine.反射.ReflectUtil;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
@@ -39,6 +40,7 @@ private final String path = "/sdcard/test.dex";
 public static final int REQUEST_PERMISSION_CALL = 100;
 FragmentManager manager = getSupportFragmentManager();
 
+
     @BindView(R.id.standard_btn)
     Button standard;
 
@@ -50,6 +52,9 @@ FragmentManager manager = getSupportFragmentManager();
 
     @BindView(R.id.single_task_btn)
     Button singleTask;
+
+    @BindView(R.id.coinPage)
+    Button coinBtn;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -119,6 +124,13 @@ FragmentManager manager = getSupportFragmentManager();
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TestActivity.this, SingleTopActivity.class));
+            }
+        });
+
+        coinBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TestActivity.this, CoinsActivity.class));
             }
         });
     }
