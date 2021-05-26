@@ -21,6 +21,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.testcoroutine.AIDL跨进程.ClientAIDLActivity;
 import com.example.testcoroutine.Activity栈.SingleInstanceActivity;
 import com.example.testcoroutine.Activity栈.SingleTaskActivity;
 import com.example.testcoroutine.Activity栈.SingleTopActivity;
@@ -55,6 +56,9 @@ FragmentManager manager = getSupportFragmentManager();
 
     @BindView(R.id.coinPage)
     Button coinBtn;
+
+    @BindView(R.id.aidlPage)
+    Button aidl;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -131,6 +135,13 @@ FragmentManager manager = getSupportFragmentManager();
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TestActivity.this, CoinsActivity.class));
+            }
+        });
+
+        aidl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TestActivity.this, ClientAIDLActivity.class));
             }
         });
     }

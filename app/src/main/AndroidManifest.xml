@@ -39,6 +39,10 @@
             android:name=".Recyclerview使用.CoinsActivity"
             android:launchMode="singleInstance"></activity>
 
+        <activity
+            android:name=".AIDL跨进程.ClientAIDLActivity"
+            android:launchMode="singleInstance"></activity>
+
     </application>
 
 </manifest>
