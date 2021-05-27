@@ -1,6 +1,7 @@
 package com.example.testcoroutine;
 
 import android.Manifest;
+import android.app.ActivityThread;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,33 +14,30 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentManager;
 
 import com.example.testcoroutine.AIDL跨进程.ClientAIDLActivity;
 import com.example.testcoroutine.Activity栈.SingleInstanceActivity;
 import com.example.testcoroutine.Activity栈.SingleTaskActivity;
 import com.example.testcoroutine.Activity栈.SingleTopActivity;
 import com.example.testcoroutine.Activity栈.StandardActivity;
+import com.example.testcoroutine.LoaderManager使用.LoaderActivity;
 import com.example.testcoroutine.LruCache源码.ImageLoaderUtil;
 import com.example.testcoroutine.Recyclerview使用.CoinsActivity;
 import com.example.testcoroutine.反射.ReflectUtil;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
 
-import java.util.ArrayList;
 //参考 https://github.com/bruce3x/ViewFinder.git
 
 @ContentView(R.layout.activity_main)
 public class TestActivity extends BaseActivity {
 private final String path = "/sdcard/test.dex";
 public static final int REQUEST_PERMISSION_CALL = 100;
-FragmentManager manager = getSupportFragmentManager();
 
 
     @BindView(R.id.standard_btn)
@@ -59,6 +57,9 @@ FragmentManager manager = getSupportFragmentManager();
 
     @BindView(R.id.aidlPage)
     Button aidl;
+
+    @BindView(R.id.loaderPage)
+    Button loader;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -144,15 +145,22 @@ FragmentManager manager = getSupportFragmentManager();
                 startActivity(new Intent(TestActivity.this, ClientAIDLActivity.class));
             }
         });
+
+        loader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TestActivity.this, LoaderActivity.class));
+            }
+        });
     }
 
     private void startRequestPermission(){
-        ActivityCompat.requestPermissions(TestActivity.this, new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CALL);
+        ActivityCompat.requestPermissions(TestActivity.this, new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.READ_CONTACTS}, REQUEST_PERMISSION_CALL);
     }
 
     private boolean checkPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE ) == PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE ) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
                 return true;
             } else {
                 return false;
