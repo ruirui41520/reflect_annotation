@@ -3,6 +3,7 @@ package com.example.testcoroutine;
 import android.Manifest;
 import android.app.ActivityThread;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -28,7 +29,9 @@ import com.example.testcoroutine.Activity栈.StandardActivity;
 import com.example.testcoroutine.LoaderManager使用.LoaderActivity;
 import com.example.testcoroutine.LruCache源码.ImageLoaderUtil;
 import com.example.testcoroutine.Recyclerview使用.CoinsActivity;
+import com.example.testcoroutine.SQlite库.PersonDataBaseActivity;
 import com.example.testcoroutine.反射.ReflectUtil;
+import com.example.testcoroutine.流.StreamUtil;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
 
@@ -38,7 +41,7 @@ import com.example.zdd_viewinjector_annotation.BindView;
 public class TestActivity extends BaseActivity {
 private final String path = "/sdcard/test.dex";
 public static final int REQUEST_PERMISSION_CALL = 100;
-
+DownloadManager manager;
 
     @BindView(R.id.standard_btn)
     Button standard;
@@ -61,6 +64,9 @@ public static final int REQUEST_PERMISSION_CALL = 100;
     @BindView(R.id.loaderPage)
     Button loader;
 
+    @BindView(R.id.personListPage)
+    Button personPage;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +81,7 @@ public static final int REQUEST_PERMISSION_CALL = 100;
         if (savedInstanceState != null){
             Log.e("****InstanceState","onCreate savedInstanceState :" + savedInstanceState.getFloat("MainActivity"));
         }
+        StreamUtil.printAllDir(getBaseContext());
     }
 
     @Override
@@ -150,6 +157,13 @@ public static final int REQUEST_PERMISSION_CALL = 100;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TestActivity.this, LoaderActivity.class));
+            }
+        });
+
+        personPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TestActivity.this, PersonDataBaseActivity.class));
             }
         });
     }

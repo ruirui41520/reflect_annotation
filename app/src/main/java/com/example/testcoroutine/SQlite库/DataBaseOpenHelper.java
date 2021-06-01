@@ -1,6 +1,7 @@
 package com.example.testcoroutine.SQlite库;
 
 import android.content.Context;
+import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -11,7 +12,7 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
     /**
      * 数据库名称
      */
-    private static final String DATABASE_NAME = "manager.db";
+    private static final String DATABASE_NAME = "colin.db";
 
     public synchronized static DataBaseOpenHelper getDatabaseOpenHelper(Context context){
         if (mDatabaseOpenHelper == null){
@@ -32,7 +33,12 @@ public class DataBaseOpenHelper extends SQLiteOpenHelper {
     }
 
     public DataBaseOpenHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION, new DatabaseErrorHandler() {
+            @Override
+            public void onCorruption(SQLiteDatabase dbObj) {
+
+            }
+        });
     }
 
     @Override

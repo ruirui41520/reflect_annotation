@@ -51,13 +51,12 @@ public class PersonTableBusiness extends DataBaseManager<Person> {
                 + PERSON_FIELD_PERSON_NAME + " VARCHAR(20) NOT NULL," + ""
                 + PERSON_FIELD_EMAIL + " VARCHAR(20) NOT NULL," + ""
                 + PERSON_FIELD_HEIGHT + " FLOAT(10) NOT NULL" + ")";
-        Log.e("*****Database Table", DATABASE_CREATE_PERSON_TABLE);
-        mSqLiteDatabase.execSQL(DATABASE_CREATE_PERSON_TABLE);
+        db.execSQL(DATABASE_CREATE_PERSON_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        mSqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + PERSON_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + PERSON_TABLE_NAME);
     }
 
     public void deletePersonById(int id) {
@@ -109,7 +108,7 @@ public class PersonTableBusiness extends DataBaseManager<Person> {
         if (person.getId() != PRIMARY_KEY_IS_NULL) {
             contentValues.put(PERSON_FIELD_ID, person.getId());
         }
-        contentValues.put(PERSON_TABLE_NAME, person.getName());
+        contentValues.put(PERSON_FIELD_PERSON_NAME, person.getName());
         contentValues.put(PERSON_FIELD_EMAIL, person.getEmail());
         contentValues.put(PERSON_FIELD_HEIGHT, person.getHeight());
         return contentValues;

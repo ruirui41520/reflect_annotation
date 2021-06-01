@@ -4,16 +4,23 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 
 public abstract class DataBaseManager<T> implements DataBaseOpenHelper.SQLiteDataTable, IDatabaseManager {
-    public SQLiteDatabase mSqLiteDatabase;
+    private SQLiteDatabase mSqLiteDatabase;
 
     public DataBaseManager(Context context){
         DataBaseOpenHelper dataBaseOpenHelper = DataBaseOpenHelper.getDatabaseOpenHelper(context);
         dataBaseOpenHelper.setOnSQLiteDataTable(this);
+        dataBaseOpenHelper.setWriteAheadLoggingEnabled(true);
         mSqLiteDatabase = dataBaseOpenHelper.getWritableDatabase();
+        try {
+        } catch (Exception e){
+            Log.e("*****ee","e.printStackTrace() : " );
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -81,7 +88,6 @@ public abstract class DataBaseManager<T> implements DataBaseOpenHelper.SQLiteDat
 
     @Override
     public void execSQL(String sql) {
-
     }
 
     @Override

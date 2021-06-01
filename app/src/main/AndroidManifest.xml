@@ -44,6 +44,9 @@
 
         <activity
             android:name=".LoaderManager使用.LoaderActivity"></activity>
+
+        <activity
+            android:name=".SQlite库.PersonDataBaseActivity"></activity>
     </application>
 
 </manifest>
