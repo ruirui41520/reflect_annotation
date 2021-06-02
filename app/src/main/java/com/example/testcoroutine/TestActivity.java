@@ -33,6 +33,7 @@ import com.example.testcoroutine.Recyclerview使用.CoinsActivity;
 import com.example.testcoroutine.SQlite库.PersonDataBaseActivity;
 import com.example.testcoroutine.StatusBar变更.StatusBarUtils;
 import com.example.testcoroutine.反射.ReflectUtil;
+import com.example.testcoroutine.广播.BroadCastActivity;
 import com.example.testcoroutine.流.StreamUtil;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
@@ -68,6 +69,9 @@ DownloadManager manager;
 
     @BindView(R.id.personListPage)
     Button personPage;
+
+    @BindView(R.id.broadPage)
+    Button broad;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -165,6 +169,13 @@ DownloadManager manager;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TestActivity.this, PersonDataBaseActivity.class));
+            }
+        });
+
+        broad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TestActivity.this, BroadCastActivity.class));
             }
         });
     }

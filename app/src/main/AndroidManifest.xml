@@ -35,18 +35,21 @@
         <activity
             android:name=".Activity栈.SingleInstanceActivity"
             android:launchMode="singleInstance"></activity>
-
         <activity
             android:name=".Recyclerview使用.CoinsActivity"></activity>
-
         <activity
             android:name=".AIDL跨进程.ClientAIDLActivity"></activity>
-
         <activity
             android:name=".LoaderManager使用.LoaderActivity"></activity>
-
         <activity
             android:name=".SQlite库.PersonDataBaseActivity"></activity>
+        <activity
+            android:name=".广播.BroadCastActivity"></activity>
+        <receiver android:name=".广播.StaticReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="com.broadcast.static"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
