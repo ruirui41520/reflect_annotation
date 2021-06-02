@@ -7,6 +7,7 @@ import android.app.DownloadManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ import com.example.testcoroutine.LoaderManager使用.LoaderActivity;
 import com.example.testcoroutine.LruCache源码.ImageLoaderUtil;
 import com.example.testcoroutine.Recyclerview使用.CoinsActivity;
 import com.example.testcoroutine.SQlite库.PersonDataBaseActivity;
+import com.example.testcoroutine.StatusBar变更.StatusBarUtils;
 import com.example.testcoroutine.反射.ReflectUtil;
 import com.example.testcoroutine.流.StreamUtil;
 import com.example.zdd_viewinjector.ViewFinder;
@@ -81,7 +83,6 @@ DownloadManager manager;
         if (savedInstanceState != null){
             Log.e("****InstanceState","onCreate savedInstanceState :" + savedInstanceState.getFloat("MainActivity"));
         }
-        StreamUtil.printAllDir(getBaseContext());
     }
 
     @Override
