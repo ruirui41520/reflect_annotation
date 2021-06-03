@@ -31,6 +31,8 @@ import com.example.testcoroutine.LoaderManager使用.LoaderActivity;
 import com.example.testcoroutine.LruCache源码.ImageLoaderUtil;
 import com.example.testcoroutine.Recyclerview使用.CoinsActivity;
 import com.example.testcoroutine.SQlite库.PersonDataBaseActivity;
+import com.example.testcoroutine.Service.CustomService;
+import com.example.testcoroutine.Service.ServiceActivity;
 import com.example.testcoroutine.StatusBar变更.StatusBarUtils;
 import com.example.testcoroutine.反射.ReflectUtil;
 import com.example.testcoroutine.广播.BroadCastActivity;
@@ -176,6 +178,13 @@ DownloadManager manager;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TestActivity.this, BroadCastActivity.class));
+            }
+        });
+
+        findViewById(R.id.servicePage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TestActivity.this, ServiceActivity.class));
             }
         });
     }

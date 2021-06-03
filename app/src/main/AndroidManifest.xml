@@ -45,11 +45,15 @@
             android:name=".SQlite库.PersonDataBaseActivity"></activity>
         <activity
             android:name=".广播.BroadCastActivity"></activity>
+        <activity
+            android:name=".Service.ServiceActivity"></activity>
+
         <receiver android:name=".广播.StaticReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="com.broadcast.static"/>
             </intent-filter>
         </receiver>
+        <service android:name=".Service.CustomService"/>
     </application>
 
 </manifest>
