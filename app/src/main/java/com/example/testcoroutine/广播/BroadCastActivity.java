@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.testcoroutine.R;
+import com.example.testcoroutine.代理模式.ProxyUtil;
 
 public class BroadCastActivity extends AppCompatActivity {
     BroadcastReceiver mDynamicReceiver = new BroadcastReceiver() {
@@ -50,6 +51,12 @@ public class BroadCastActivity extends AppCompatActivity {
                 intent.setAction("com.broadcast.dynamic");
                 intent.putExtra("test","colin dynamic");
                 sendBroadcast(intent);
+            }
+        });
+        findViewById(R.id.sendInvocation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ProxyUtil.buyUse();
             }
         });
     }
