@@ -9,6 +9,6 @@ public class CustomApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//        ClassLoaderUtil.loadClass(this);
+        ClassLoaderUtil.loadClass(this);
     }
 }

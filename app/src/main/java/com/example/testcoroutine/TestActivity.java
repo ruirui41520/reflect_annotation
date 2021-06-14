@@ -1,7 +1,6 @@
 package com.example.testcoroutine;
 
 import android.Manifest;
-import android.app.ActivityThread;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.content.DialogInterface;
