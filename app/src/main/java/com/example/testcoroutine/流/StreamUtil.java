@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Environment;
 import android.util.Log;
 
-import com.example.testcoroutine.FileUtils;
+import com.example.testcoroutine.Utils.FileUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,8 +15,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import static android.os.Environment.DIRECTORY_MUSIC;
-import static com.example.testcoroutine.FileUtils.FLAG_FAILED;
-import static com.example.testcoroutine.FileUtils.FLAG_SUCCESS;
+import static com.example.testcoroutine.Utils.FileUtils.FLAG_FAILED;
 
 public class StreamUtil {
     private static SharedPreferences.Editor editor;

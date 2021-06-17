@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.testcoroutine.DensityUtil;
+import com.example.testcoroutine.Utils.DensityUtil;
 import com.example.testcoroutine.R;
 
 public class CustomGalleryGroup extends ViewGroup {

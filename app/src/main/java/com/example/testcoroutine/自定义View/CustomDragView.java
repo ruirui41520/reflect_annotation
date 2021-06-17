@@ -1,17 +1,13 @@
 package com.example.testcoroutine.自定义View;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.WindowManager;
-import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 
-import com.example.testcoroutine.DensityUtil;
-import com.example.testcoroutine.R;
+import com.example.testcoroutine.Utils.DensityUtil;
 
 public class CustomDragView extends AppCompatImageView {
     private int screenWidth;
