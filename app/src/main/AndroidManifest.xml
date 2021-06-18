@@ -48,6 +48,9 @@
         <activity
             android:name=".Service.ServiceActivity"></activity>
 
+        <activity
+            android:name=".拉数据.QuarkActivity"></activity>
+
         <receiver android:name=".广播.StaticReceiver" android:exported="false">
             <intent-filter>
                 <action android:name="com.broadcast.static"/>

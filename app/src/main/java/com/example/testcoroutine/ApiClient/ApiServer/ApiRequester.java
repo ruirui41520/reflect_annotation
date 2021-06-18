@@ -4,8 +4,6 @@ import com.example.testcoroutine.ApiClient.Exception.XApiException;
 import com.example.testcoroutine.ApiClient.Model.IResultContainer;
 import com.example.testcoroutine.CustomApplication;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 import rx.Single;

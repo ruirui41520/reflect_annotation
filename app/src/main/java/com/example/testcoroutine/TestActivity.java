@@ -35,6 +35,7 @@ import com.example.testcoroutine.Service.ServiceActivity;
 import com.example.testcoroutine.StatusBar变更.StatusBarUtils;
 import com.example.testcoroutine.反射.ReflectUtil;
 import com.example.testcoroutine.广播.BroadCastActivity;
+import com.example.testcoroutine.拉数据.QuarkActivity;
 import com.example.testcoroutine.流.StreamUtil;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
@@ -184,6 +185,13 @@ DownloadManager manager;
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TestActivity.this, ServiceActivity.class));
+            }
+        });
+
+        findViewById(R.id.quarkPage).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TestActivity.this, QuarkActivity.class));
             }
         });
     }
