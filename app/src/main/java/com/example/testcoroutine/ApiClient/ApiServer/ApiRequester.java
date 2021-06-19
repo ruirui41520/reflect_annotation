@@ -1,8 +1,12 @@
 package com.example.testcoroutine.ApiClient.ApiServer;
 
 import com.example.testcoroutine.ApiClient.Exception.XApiException;
+import com.example.testcoroutine.ApiClient.Model.AuthTokenInfo;
 import com.example.testcoroutine.ApiClient.Model.IResultContainer;
+import com.example.testcoroutine.ApiClient.Request.RefreshTokenRequest;
+import com.example.testcoroutine.ApiClient.Subscriber.ApiClientSubscriber;
 import com.example.testcoroutine.CustomApplication;
+import com.example.testcoroutine.Utils.DeviceUtils;
 
 import java.util.concurrent.ConcurrentLinkedDeque;
 
@@ -10,7 +14,6 @@ import rx.Single;
 import rx.SingleSubscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-import rx.schedulers.*;
 
 public class ApiRequester {
 
@@ -72,10 +75,8 @@ public class ApiRequester {
                 responseObserver.onError(error);
             }
         };
-
         requests.add(request);
-
-//        refreshToken();
+        refreshToken();
     }
 
     private boolean needToRefreshToken() {
@@ -87,4 +88,52 @@ public class ApiRequester {
         }
         return false;
     }
+
+    private void refreshToken(){
+        if (isRefreshTokenRunning) {
+            return;
+        }
+        isRefreshTokenRunning = true;
+        String refreshToken = CustomApplication.getPreferenceUtils().getRefreshToken();
+        UserServer.requestRefreshAccessToken(new RefreshTokenRequest(refreshToken, DeviceUtils.getDeviceId(CustomApplication.getInstance())), new ApiClientSubscriber<IResultContainer<AuthTokenInfo>>() {
+            @Override
+            public void onError(Throwable e) {
+                super.onError(e);
+                try {
+                    while (true) {
+                        SingleSubscriber<IResultContainer> request = requests.poll();
+                        if (request == null) {
+                            break;
+                        }
+                        request.onError(e);
+                    }
+                    isRefreshTokenRunning = false;
+                } catch (Exception ex) {
+                }
+            }
+
+            @Override
+            public void onSuccess(IResultContainer<AuthTokenInfo> value) {
+                AuthTokenInfo authTokenInfo = value.getData();
+                if (authTokenInfo != null){
+                    CustomApplication.getPreferenceUtils().setRefreshToken(authTokenInfo.getRefreshToken());
+                }
+
+                try {
+                    while (true) {
+                        SingleSubscriber<IResultContainer> request = requests.poll();
+                        if (request == null) {
+                            break;
+                        }
+                        request.onSuccess(value);
+                    }
+                    isRefreshTokenRunning = false;
+                } catch (Exception ex) {
+                }
+            }
+        });
+
+
+    }
+
 }
