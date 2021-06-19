@@ -6,13 +6,11 @@ import android.app.DownloadManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -27,16 +25,11 @@ import com.example.testcoroutine.Activity栈.SingleTaskActivity;
 import com.example.testcoroutine.Activity栈.SingleTopActivity;
 import com.example.testcoroutine.Activity栈.StandardActivity;
 import com.example.testcoroutine.LoaderManager使用.LoaderActivity;
-import com.example.testcoroutine.LruCache源码.ImageLoaderUtil;
 import com.example.testcoroutine.Recyclerview使用.CoinsActivity;
 import com.example.testcoroutine.SQlite库.PersonDataBaseActivity;
-import com.example.testcoroutine.Service.CustomService;
 import com.example.testcoroutine.Service.ServiceActivity;
-import com.example.testcoroutine.StatusBar变更.StatusBarUtils;
-import com.example.testcoroutine.反射.ReflectUtil;
 import com.example.testcoroutine.广播.BroadCastActivity;
-import com.example.testcoroutine.拉数据.QuarkActivity;
-import com.example.testcoroutine.流.StreamUtil;
+import com.example.testcoroutine.拉数据.GankActivity;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
 
@@ -188,10 +181,10 @@ DownloadManager manager;
             }
         });
 
-        findViewById(R.id.quarkPage).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.container_id).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(TestActivity.this, QuarkActivity.class));
+                startActivity(new Intent(TestActivity.this, GankActivity.class));
             }
         });
     }

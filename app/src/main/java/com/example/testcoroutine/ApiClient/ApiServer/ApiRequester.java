@@ -35,7 +35,6 @@ public class ApiRequester {
     }
 
     public <T extends IResultContainer> void request(final Single<T> api, final SingleSubscriber<T> responseObserver, boolean forcedRefresh) {
-        //바로 실행
         if (needToRefreshToken() == false && !forcedRefresh) {
             api.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
