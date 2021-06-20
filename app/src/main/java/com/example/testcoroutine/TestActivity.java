@@ -39,7 +39,6 @@ import com.example.zdd_viewinjector_annotation.BindView;
 public class TestActivity extends BaseActivity {
 private final String path = "/sdcard/test.dex";
 public static final int REQUEST_PERMISSION_CALL = 100;
-DownloadManager manager;
 
     @BindView(R.id.standard_btn)
     Button standard;
