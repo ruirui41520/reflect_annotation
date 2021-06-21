@@ -1,6 +1,7 @@
 package com.example.testcoroutine.ApiClient;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.testcoroutine.ApiClient.Http.CustomHttpFactory;
 import com.example.testcoroutine.Utils.JsonUtils;
@@ -22,7 +23,7 @@ public class Client {
 
     public Client(Context context, CustomHttpFactory httpClientFactory) {
         originClient = httpClientFactory.create();
-        defaultApiHost = "https://quark.sm.cn";
+        defaultApiHost = "http://gank.io";
     }
 
 

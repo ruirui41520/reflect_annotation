@@ -180,7 +180,7 @@ public static final int REQUEST_PERMISSION_CALL = 100;
             }
         });
 
-        findViewById(R.id.container_id).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.gankPage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TestActivity.this, GankActivity.class));

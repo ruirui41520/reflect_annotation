@@ -1,6 +1,7 @@
 package com.example.testcoroutine.拉数据;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +40,13 @@ public class GankDataFragment extends BaseRecyclerFragment {
     }
 
     private void getInfoList(){
-        NewsRequest request = new NewsRequest("Android",10,1);
+        NewsRequest request = new NewsRequest("Android",1,1);
         GankApiService.requestGetInfoData(request,new LifecycleObservedApiSubscriber<NewsEntity>(this) {
+            @Override
+            protected void onUnexpectedError(Throwable e) {
+                super.onUnexpectedError(e);
+            }
+
             @Override
             public void onSuccessWithValidLifecycle(NewsEntity suggestionViewResultContainer) {
                 if (suggestionViewResultContainer != null){
@@ -55,11 +61,9 @@ public class GankDataFragment extends BaseRecyclerFragment {
 
     private void bindGankData(List<NewsResultEntity> newsResultEntities){
         if (newsResultEntities.size() == 0) return;
-        progressBar.show();
         for (int i = 0;i < newsResultEntities.size(); i++){
             itemList.add(new GankRecyclerItem(newsResultEntities.get(i)));
         }
         getAdapter().addAll(itemList);
-        progressBar.hide();
     }
 }

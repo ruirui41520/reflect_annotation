@@ -15,19 +15,21 @@ public class ApiRequestInterceptor implements Interceptor {
     private String quarkBaseUrl;
     private static final String LANGUAGE_HEADER = "Accept-Language";
     private static final String USER_AGENT_HEADER = "User-Agent";
+    private static final String CONTENT_TYPE = "Content-Type";
     public ApiRequestInterceptor(PreferenceUtils prefUtils) {
         this.prefUtils = prefUtils;
-        quarkBaseUrl = "https://quark.sm.cn";
+//        quarkBaseUrl = "https://quark.sm.cn";
     }
 
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
         Request.Builder builder = request.newBuilder();
-        String requestUrl = request.url().toString();
-        if (requestUrl.startsWith(quarkBaseUrl)){
-            builder.url(request.url());
-        }
+//        String requestUrl = request.url().toString();
+//        if (requestUrl.startsWith(quarkBaseUrl)){
+//            builder.url(request.url());
+//        }
+        builder.url(request.url());
         overrideUserAgentHeader(builder);
         overrideAcceptLanguageHeader(builder);
         applyRequestHeaders(builder);
@@ -36,6 +38,7 @@ public class ApiRequestInterceptor implements Interceptor {
 
     private void overrideAcceptLanguageHeader(Request.Builder builder){
         builder.addHeader(LANGUAGE_HEADER, Locale.getDefault().getLanguage());
+        builder.addHeader(CONTENT_TYPE,"application/json");
     }
 
     private void overrideUserAgentHeader(Request.Builder builder) {
