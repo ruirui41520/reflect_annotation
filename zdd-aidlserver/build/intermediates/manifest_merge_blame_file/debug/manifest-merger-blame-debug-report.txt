@@ -1,0 +1,61 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.zdd_aidlserver"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+8-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml
+10
+11    <application
+11-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:5:5-27:19
+12        android:allowBackup="true"
+12-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:6:9-35
+13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+13-->[androidx.core:core:1.5.0] /Users/zhaodedong/.gradle/caches/transforms-2/files-2.1/8d15a3595b9b5d6a505a55ae948e0588/core-1.5.0/AndroidManifest.xml:24:18-86
+14        android:debuggable="true"
+15        android:icon="@mipmap/ic_launcher"
+15-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:7:9-43
+16        android:label="@string/app_name"
+16-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:8:9-41
+17        android:roundIcon="@mipmap/ic_launcher_round"
+17-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:9:9-54
+18        android:supportsRtl="true"
+18-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:10:9-35
+19        android:theme="@style/AppTheme" >
+19-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:11:9-40
+20        <activity android:name="com.example.zdd_aidlserver.MainActivity" >
+20-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:12:9-18:20
+20-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:12:19-47
+21            <intent-filter>
+21-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:13:13-17:29
+22                <action android:name="android.intent.action.MAIN" />
+22-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:14:17-69
+22-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:14:25-66
+23
+24                <category android:name="android.intent.category.LAUNCHER" />
+24-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:16:17-77
+24-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:16:27-74
+25            </intent-filter>
+26        </activity>
+27
+28        <service android:name="com.example.zdd_aidlserver.AIDLServer" >
+28-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:20:9-26:19
+28-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:21:13-39
+29            <intent-filter>
+29-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:22:13-25:29
+30                <action android:name="com.example.zdd_aidlserver" />
+30-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:23:17-68
+30-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:23:25-66
+31
+32                <category android:name="android.intent.category.DEFAULT" />
+32-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:24:17-75
+32-->/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/src/main/AndroidManifest.xml:24:27-73
+33            </intent-filter>
+34        </service>
+35    </application>
+36
+37</manifest>

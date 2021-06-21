@@ -32,9 +32,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
+    annotationProcessor project(':zdd-viewinjector-compiler')
     implementation project(':zdd-viewInjector-annotation')
     implementation project(':zdd-viewInjector')
-    annotationProcessor project(':zdd-viewinjector-compiler')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

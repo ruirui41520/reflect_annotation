@@ -1,0 +1,15 @@
+com/example/zdd_aidlserver/AIDLServer.java
+ com.example.zdd_aidlserver.AIDLServer
+ com.example.zdd_aidlserver.AIDLServer$MyBinder
+ com.example.zdd_aidlserver.AIDLServer$OnLoginListener
+com/example/zdd_aidlserver/IMyAidlInterface.java
+ com.example.zdd_aidlserver.IMyAidlInterface
+ com.example.zdd_aidlserver.IMyAidlInterface$Default
+ com.example.zdd_aidlserver.IMyAidlInterface$Stub
+ com.example.zdd_aidlserver.IMyAidlInterface$Stub$Proxy
+com/example/zdd_aidlserver/MainActivity.java
+ com.example.zdd_aidlserver.MainActivity
+ com.example.zdd_aidlserver.MainActivity$1
+ com.example.zdd_aidlserver.MainActivity$2
+com/example/zdd_aidlserver/BuildConfig.java
+ com.example.zdd_aidlserver.BuildConfig

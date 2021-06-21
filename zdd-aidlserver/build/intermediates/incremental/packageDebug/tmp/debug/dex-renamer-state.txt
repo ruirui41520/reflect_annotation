@@ -1,0 +1,4 @@
+#Sun Jun 20 20:07:49 CST 2021
+base.0=/Volumes/Home/Git/reflect_annotation/zdd-aidlserver/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

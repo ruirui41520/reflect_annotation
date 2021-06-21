@@ -1,0 +1,4 @@
+com/example/zdd_plugin/TestPlugin.java
+ com.example.zdd_plugin.TestPlugin
+com/example/zdd_plugin/BuildConfig.java
+ com.example.zdd_plugin.BuildConfig
