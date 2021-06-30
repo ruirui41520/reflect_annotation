@@ -2,7 +2,6 @@ package com.example.testcoroutine;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.DownloadManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -12,13 +11,16 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.android.server.am.ActivityManagerServiceProto;
 import com.example.testcoroutine.AIDL跨进程.ClientAIDLActivity;
 import com.example.testcoroutine.Activity栈.SingleInstanceActivity;
 import com.example.testcoroutine.Activity栈.SingleTaskActivity;
@@ -30,6 +32,8 @@ import com.example.testcoroutine.SQlite库.PersonDataBaseActivity;
 import com.example.testcoroutine.Service.ServiceActivity;
 import com.example.testcoroutine.广播.BroadCastActivity;
 import com.example.testcoroutine.拉数据.GankActivity;
+import com.example.testcoroutine.排序算法.CharFuncUtil;
+import com.example.testcoroutine.排序算法.SequenceFuncUtil;
 import com.example.zdd_viewinjector.ViewFinder;
 import com.example.zdd_viewinjector_annotation.BindView;
 
@@ -91,6 +95,7 @@ public static final int REQUEST_PERMISSION_CALL = 100;
     @Override
     protected void onResume() {
         super.onResume();
+        CharFuncUtil.moveSpecialChar();
     }
 
     @Override
